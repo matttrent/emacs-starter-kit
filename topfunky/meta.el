@@ -2,10 +2,6 @@
 ;; For Emacs from source. Opens files in the existing frame.
 ;;(setq ns-pop-up-frames nil)
 
-;; Lines tall, characters wide
-;;(set-frame-height (car (frame-list)) 20)
-;;(set-frame-width (car (frame-list)) 60)
-
 ;; Save backups in one place
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
@@ -77,6 +73,13 @@
   (interactive)
   (recenter 3))
 (global-set-key [(control shift l)] 'recenter-to-top)
+
+
+(defun kill-current-line ()
+  "Kill the current line, no matter where the cursor is."
+  (interactive)
+  (textmate-select-line) (kill-region (region-beginning) (region-end)))
+(global-set-key [(control shift k)] 'kill-current-line)
 
 
 (defun kill-word-and-capitalize (arg)
