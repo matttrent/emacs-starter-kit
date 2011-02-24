@@ -120,10 +120,7 @@
 (color-theme-initialize)
 
 ;; Activate theme
-(load (concat dotfiles-dir "topfunky/theme.el"))
-(color-theme-topfunky)
-
+;(load (concat dotfiles-dir "topfunky/theme.el"))
+;(color-theme-topfunky)
 
 (require 'autotest)
-
-
