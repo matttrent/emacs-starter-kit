@@ -6,10 +6,10 @@
 (load (concat dotfiles-dir "topfunky.el"))
 ;(require 'topfunky)
 
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
-(require 'textmate)
+;(add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
+;(require 'textmate)
 (require 'peepopen)
-(textmate-mode)
+;(textmate-mode)
 (setq ns-pop-up-frames nil)
 
 (require 'maxframe)
