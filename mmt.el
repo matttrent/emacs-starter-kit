@@ -1,4 +1,19 @@
 
+;; --- PATH CONFIGURATION ------------------------------------------------------
+
+(let ((path))
+  (setq path (concat "~/.gem/ruby/1.8/bin:"
+                     "~/bin:"
+                     "~/Applications:"
+                     "~/src/homebrew/bin:"
+                     "/usr/local/texlive/2010/bin/x86_64-darwin:"
+                     "/Library/Frameworks/EPD64.framework/Versions/Current/bin:"
+                     "/opt/local/bin:"
+                     "/usr/local/bin:"
+                     "/usr/bin:"
+                     "/bin"))
+  (setenv "PATH" path))
+
 ;; --- EXISTING ----------------------------------------------------------------
 
 (add-to-list 'load-path (concat dotfiles-dir "/vendor"))
@@ -38,12 +53,36 @@
 
 (setq org-log-done t)
 
+;; --- SCONS -------------------------------------------------------------------
+
+(add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
+(add-to-list 'auto-mode-alist '("SConscript" . python-mode))
+
+(defvar compile-command "scons")
+
 ;; --- TEXT APPEARANCE ---------------------------------------------------------
 
 ;; --- Theme
 
 (load (concat dotfiles-dir "mtrent/twilight.el"))
 (color-theme-twilight)
+
+;; --- Fonts
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil 
+                         :inverse-video nil :box nil
+                         :strike-through nil :overline nil :underline nil
+                         :slant normal :weight normal :height 110 :width normal
+                         :foundry "apple" :family "Anonymous Pro")))))
+
+(setq-default line-spacing 1)
+
+;(setq mac-allow-anti-aliasing nil)
 
 ;; --- PROGRAMMING -------------------------------------------------------------
 

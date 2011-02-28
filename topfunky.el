@@ -1,15 +1,5 @@
 ;; DESCRIPTION: topfunky settings
 
-;; Manually set PATH for use by eshell, rspec-mode, etc.
-(let ((path))
-  (setq path (concat "~/.gem/ruby/1.8/bin:"
-                     "~/bin:"
-                     "~/src/homebrew/bin:"
-                     "/usr/local/bin:"
-                     "/usr/bin:"
-                     "/bin"))
-  (setenv "PATH" path))
-
 (add-to-list 'load-path (concat dotfiles-dir "/vendor"))
 
 (require 'topfunky/meta)
