@@ -36,10 +36,21 @@
 
 (require 'revbufs)
 
+;; --- WORD COUNT --------------------------------------------------------------
+
+(require 'word-count)
+
+;(add-to-list 'auto-mode-alist '(".md"    . word-count-mode))
+;(add-to-list 'auto-mode-alist '(".mdown" . word-count-mode))
+
+(add-hook 'text-mode-hook 'word-count-mode-on)
+
 ;; --- EDITTING ----------------------------------------------------------------
 
 ;(tool-bar-mode 1)
 (menu-bar-mode 1)
+
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 (global-set-key "\M- " 'set-mark-command)
 
@@ -51,6 +62,11 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
+(setq org-directory "~/Archive/Filing/organizer")
+(setq org-mobile-directory "~/Dropbox/MobileOrg")
+; (setq org-agenda-files (quote ("~/Archive/Filing/organizer/test.org")))
+(setq org-mobile-inbox-for-pull "~/Archive/Filing/organizer/inbox.org")
+
 (setq org-log-done t)
 
 ;; --- SCONS -------------------------------------------------------------------
@@ -59,6 +75,10 @@
 (add-to-list 'auto-mode-alist '("SConscript" . python-mode))
 
 (defvar compile-command "scons")
+
+;; --- ZSH ---------------------------------------------------------------------
+
+(add-to-list 'auto-mode-alist '(".zsh" . shell-script-mode))
 
 ;; --- TEXT APPEARANCE ---------------------------------------------------------
 
