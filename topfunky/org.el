@@ -14,11 +14,11 @@
             (local-set-key [(control meta return)] 'org-insert-heading)
             (local-set-key [(control shift left)] 'previous-buffer)
             (local-set-key [(control shift right)] 'next-buffer)
-            (local-set-key [(meta shift right)] 'ido-switch-buffer)
-            (local-set-key [(meta shift left)] 'magit-status)
+            (local-set-key [(super shift right)] 'ido-switch-buffer)
+            (local-set-key [(super shift left)] 'magit-status)
             (local-set-key [(control shift t)] 'timestamp-for-org)
             ))
 
-(setq org-agenda-files (file-expand-wildcards "~/bin/org/*.org"))
+(setq org-agenda-files (file-expand-wildcards "~/Filing/organizer/*.org"))
 
 (provide 'topfunky/org)

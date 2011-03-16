@@ -47,20 +47,35 @@
 
 ;; --- EDITTING ----------------------------------------------------------------
 
+;; turn on menu bar
 ;(tool-bar-mode 1)
 (menu-bar-mode 1)
 
+;; set line wrap for text mode
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
+;; change setting mark to play nice with all my something-spacebar hotkeys
 (global-set-key "\M- " 'set-mark-command)
 
-(global-set-key [(super shift left)] 'previous-multiframe-window)
-(global-set-key [(super shift right)] 'next-multiframe-window)
+;; set up shifting between different frames
+(global-set-key [(super meta left)] 'previous-multiframe-window)
+(global-set-key [(super meta right)] 'next-multiframe-window)
+
+;; set up emacsclient to accept requests to edit files from command
+;; line EDITOR
+(defvar server-buffer-clients)
+(when (and (fboundp 'server-start) (string-equal (getenv "TERM") 'xterm))
+  (server-start)
+  (defun fp-kill-server-with-buffer-routine ()
+    (and server-buffer-clients (server-done)))
+  (add-hook 'kill-buffer-hook 'fp-kill-server-with-buffer-routine))
 
 ;; --- ORG MODE ----------------------------------------------------------------
 
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-directory "~/Archive/Filing/organizer")
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
@@ -68,6 +83,26 @@
 (setq org-mobile-inbox-for-pull "~/Archive/Filing/organizer/inbox.org")
 
 (setq org-log-done t)
+
+;; --- REMEMBER ----------------------------------------------------------------
+
+(require 'remember)
+
+;; --- PYTHON / IPYTHON --------------------------------------------------------
+
+(setq ipython-command "/Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython")
+(require 'ipython)
+
+(setq py-python-command-args '("-pylab"))
+
+;;pdb setup, note the python version
+(setq pdb-path '/Library/Frameworks/EPD64.framework/Versions/Current/lib/python2.6/pdb.py
+       gud-pdb-command-name (symbol-name pdb-path))
+ (defadvice pdb (before gud-query-cmdline activate)
+   "Provide a better default command line when called interactively."
+   (interactive
+    (list (gud-query-cmdline pdb-path
+	 		    (file-name-nondirectory buffer-file-name)))))
 
 ;; --- SCONS -------------------------------------------------------------------
 
