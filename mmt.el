@@ -78,15 +78,11 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-directory "~/Archive/Filing/organizer")
+(setq org-agenda-files (file-expand-wildcards (concat org-directory "/*.org")))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
-; (setq org-agenda-files (quote ("~/Archive/Filing/organizer/test.org")))
 (setq org-mobile-inbox-for-pull "~/Archive/Filing/organizer/inbox.org")
-
-(setq org-log-done t)
-
-;; --- REMEMBER ----------------------------------------------------------------
-
-(require 'remember)
 
 ;; --- PYTHON / IPYTHON --------------------------------------------------------
 

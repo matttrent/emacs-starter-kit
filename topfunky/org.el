@@ -1,4 +1,6 @@
 ;; org-mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/org-mode" ))
+
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 ;; Functions
@@ -19,6 +21,6 @@
             (local-set-key [(control shift t)] 'timestamp-for-org)
             ))
 
-(setq org-agenda-files (file-expand-wildcards "~/Filing/organizer/*.org"))
+(setq org-log-done t)
 
 (provide 'topfunky/org)
