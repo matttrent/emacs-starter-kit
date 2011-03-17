@@ -322,7 +322,7 @@ A pair with 't' is a default.")
 
 (global-set-key "\M-+" 'word-count-mode)
 (defvar word-count-mode-map (make-sparse-keymap))
-(define-key word-count-mode-map "\M- " 'word-count-set-area)
+;(define-key word-count-mode-map "\M- " 'word-count-set-area)
 
 
 (defvar word-count-mode nil "*Non-nil means in an word-count mode.")

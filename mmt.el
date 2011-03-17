@@ -43,6 +43,11 @@
 ;(add-to-list 'auto-mode-alist '(".md"    . word-count-mode))
 ;(add-to-list 'auto-mode-alist '(".mdown" . word-count-mode))
 
+;; (add-hook 'word-count-mode-hook
+;;           (lambda()
+;;             (global-set-key "\M- " 'set-mark-command)
+;;             ))
+
 (add-hook 'text-mode-hook 'word-count-mode-on)
 
 ;; --- EDITTING ----------------------------------------------------------------
@@ -82,7 +87,9 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
-(setq org-mobile-inbox-for-pull "~/Archive/Filing/organizer/inbox.org")
+(setq org-mobile-inbox-for-pull (concat org-directory "/inbox.org"))
+
+(setq org-startup-indented t)
 
 ;; --- PYTHON / IPYTHON --------------------------------------------------------
 
