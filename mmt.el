@@ -48,7 +48,7 @@
 ;;             (global-set-key "\M- " 'set-mark-command)
 ;;             ))
 
-(add-hook 'text-mode-hook 'word-count-mode-on)
+;(add-hook 'text-mode-hook 'word-count-mode-on)
 
 ;; --- EDITTING ----------------------------------------------------------------
 
